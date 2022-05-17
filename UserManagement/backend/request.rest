@@ -1,1 +1,29 @@
-GET http://localhost:5000/users
+### GET Request
+GET http://localhost:5000/users/
+
+### POST Request
+POST http://localhost:5000/users
+Content-Type: application/json
+
+{
+    "name":"fsdf",
+    "email":"sdfayu@gmail.com",
+    "gender":"FedsfsMale",
+    "address":"Cosdfsdlombo",
+    "phone":"0765324489965"
+}
+
+### Update Request
+PATCH http://localhost:5000/users/id
+Content-Type: application/json
+
+{
+    "name":"Kamal",
+    "email":"kamal@gmail.com",
+    "gender":"Male",
+    "address":"Matara",
+    "phone":"0721458896"
+}
+
+### Delete Request
+DELETE http://localhost:5000/users/62841bbb4b4505c50f457a90
