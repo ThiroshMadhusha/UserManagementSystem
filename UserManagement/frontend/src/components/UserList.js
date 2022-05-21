@@ -38,7 +38,7 @@ const UserList = () => {
                 <td>{user.address}</td>
                 <td>{user.phone}</td>
                 <td>
-                  <button className="button is-warning is-small">Update</button>
+                  <button className="button is-warning is-small">View</button>
                   <button className="button is-success is-small">Update</button>
                   <button className="button is-danger is-small">Delete</button>
                 </td>
