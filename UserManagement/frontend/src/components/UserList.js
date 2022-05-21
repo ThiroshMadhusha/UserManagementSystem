@@ -1,6 +1,7 @@
 // Short cut key --> rafce
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const UserList = () => {
   const [users, setUser] = useState([]);
@@ -13,9 +14,21 @@ const UserList = () => {
     const response = await axios.get("http://localhost:5000/users");
     setUser(response.data);
   };
+
+  const deleteUser = async (id) => {
+    try {
+      await axios.delete(`http://localhost:5000/users/${id}`);
+      getUsers();
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className="columns">
       <div className="column">
+        <Link to="add" className="button is-success">
+          Create New User
+        </Link>
         <table className="table is-striped is-fullwidth mt-5">
           <thead>
             <tr>
@@ -38,9 +51,19 @@ const UserList = () => {
                 <td>{user.address}</td>
                 <td>{user.phone}</td>
                 <td>
-                  <button className="button is-warning is-small">View</button>
-                  <button className="button is-success is-small">Update</button>
-                  <button className="button is-danger is-small">Delete</button>
+                  <button className="button is-success is-small">View</button>
+                  <Link
+                    to={`edit/${user._id}`}
+                    className="button is-warning is-small"
+                  >
+                    Update
+                  </Link>
+                  <button
+                    onClick={() => deleteUser(user._id)}
+                    className="button is-danger is-small"
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}
